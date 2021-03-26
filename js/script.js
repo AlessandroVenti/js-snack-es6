@@ -61,7 +61,7 @@ function findLightBike2() {
 // $(document).ready(findLightBike2);
 
 
-                                   //Esercizio 2 diviso in 3 sezioni, tutte e 3 le sezioni funzionano stand-alone.
+                                   //Esercizio 2 diviso in 3 sezioni con 3 funzioni standalone.
 
 
 
@@ -113,7 +113,7 @@ function changeScoresAndPenalities() {
      
 }
 
-// $(document).ready(changeScoreAndPenality);
+// $(document).ready(changeScoresAndPenalities);
 
                                         //3
                                         // Usando la destrutturazione creiamo un nuovo array 
