@@ -10,30 +10,69 @@
 function findLightBike() {
 
      const bikes = [
-          {'name' : 'Gianluca', 'weight' : 30},
-          {'name' : 'Antonio', 'weight' : 20},
-          {'name' : 'Olga', 'weight' : 10},
-          {'name' : 'Judy', 'weight' : 11},
-          {'name' : 'Panam', 'weight' : 15},
-          {'name' : 'Lorenzo', 'weight' : 25},
+          { 'name' : 'Gianluca', 'weight' : 30 },
+          { 'name' : 'Antonio', 'weight' : 20 },
+          { 'name' : 'Olga', 'weight' : 10 },
+          { 'name' : 'Judy', 'weight' : 11 },
+          { 'name' : 'Panam', 'weight' : 15 },
+          { 'name' : 'Lorenzo', 'weight' : 25 },
      ];
 
-     var minWeightBikes = [];
+     const minWeightBikes = [];
 
-     for(let i = 0; i < bikes.length; i++) {
+     for( let i = 0; i < bikes.length; i++ ) {
           minWeightBikes.push(bikes[i].weight);
      }
 
-     var minWeight = Math.min(...minWeightBikes);
+     let minWeight = Math.min(...minWeightBikes);
 
-     for (let j = 0; j < bikes.length; j++) {
+     for ( let j = 0; j< bikes.length; j++ ) {
           if ( bikes[j].weight == minWeight ) {
                console.log(`most light bike :`, bikes[j]);
           }
      }
 }
      
-$(document).ready(findLightBike);
+// $(document).ready(findLightBike);
+
+
+                                   //Soluzione usando il destructuring
+
+function findLightBike2() {
+     const bikes = [
+          { 'name' : 'Gianluca', 'weight' : 30 },
+          { 'name' : 'Antonio', 'weight' : 20 },
+          { 'name' : 'Olga', 'weight' : 10 },
+          { 'name' : 'Judy', 'weight' : 11 },
+          { 'name' : 'Panam', 'weight' : 15 },
+          { 'name' : 'Lorenzo', 'weight' : 25 },
+     ];
+     
+     let lightBike = { name: '', weight: Number.MAX_SAFE_INTEGER };
+          for ( let i = 0; i< bikes.length; i++ ) {
+               let { name, weight } = bikes[i];
+               if ( weight < lightBike.weight ) {
+                    lightBike = bikes[i];
+               }
+          }
+          console.log(lightBike);
+
+}
+
+// $(document).ready(findLightBike2);
+
+
+
+                                        // Creare un array di oggetti di squadre di calcio. 
+                                   // Ogni squadra avrà diverse proprietà: 
+                                   // nome, punti fatti, falli subiti.
+                                   // Nome sarà l'unica proprietà da compilare, 
+                                   // le altre saranno tutte settate a 0.
+                                   // Generare numeri random al posto degli 0 nelle proprietà:
+                                   // punti fatti e falli subiti
+                                    // Usando la destrutturazione creiamo un nuovo array 
+                                   // i cui elementi contengono solo nomi e falli subiti 
+                                   // e stampiamo tutto in console.
 
 
 
