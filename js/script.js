@@ -77,13 +77,13 @@ function findLightBike2() {
 function footballDatabase() {
 
      var squads = [
-          { 'name' : 'Roma', 'punti' : 0, 'falli' : 0 },
-          { 'name' : 'Milan', 'punti' : 0, 'falli' : 0 },
-          { 'name' : 'Inter', 'punti' : 0, 'falli' : 0 },
-          { 'name' : 'Napoli', 'punti' : 0, 'falli' : 0 },
-          { 'name' : 'Parma', 'punti' : 0, 'falli' : 0 },
-          { 'name' : 'Juventus', 'punti' : 0, 'falli' : 0 },
-          { 'name' : 'Brescia', 'punti' : 0, 'falli' : 0 }
+          { 'name' : 'Roma', 'score' : 0, 'penality' : 0 },
+          { 'name' : 'Milan', 'score' : 0, 'penality' : 0 },
+          { 'name' : 'Inter', 'score' : 0, 'penality' : 0 },
+          { 'name' : 'Napoli', 'score' : 0, 'penality' : 0 },
+          { 'name' : 'Parma', 'score' : 0, 'penality' : 0 },
+          { 'name' : 'Juventus', 'score' : 0, 'penality' : 0 },
+          { 'name' : 'Brescia', 'score' : 0, 'penality' : 0 }
      ];
 
      console.log(squads);
@@ -93,9 +93,31 @@ function footballDatabase() {
 // $(document).ready(footballDatabase);
 
 
-                                             //2 
+                                        //2 
                                         // Generare numeri random al posto degli 0 nelle proprietà:
                                         // punti fatti e falli subiti
+
+function getRandom() {
+
+     return Math.round(Math.random() * (100 - 1) + 1);
+}
+
+function changeScoreAndPenality() {
+     let squads = footballDatabase();
+     for( let i = 0; i < squads.length; i++) {
+          squads[i].score = getRandom();
+          squads[i].penality = getRandom();
+     }
+
+     console.log(squads);
+     
+}
+
+$(document).ready(changeScoreAndPenality);
+
+
+     
+
                                         //3
                                         // Usando la destrutturazione creiamo un nuovo array 
                                         // i cui elementi contengono solo nomi e falli subiti 
