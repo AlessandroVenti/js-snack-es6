@@ -8,7 +8,6 @@
 
                                                  
 function findLightBike() {
-
      const bikes = [
           { 'name' : 'Gianluca', 'weight' : 30 },
           { 'name' : 'Antonio', 'weight' : 20 },
@@ -62,7 +61,7 @@ function findLightBike2() {
 // $(document).ready(findLightBike2);
 
 
-                                   //Esercizio 2
+                                   //Esercizio 2 diviso in 3 sezioni, tutte e 3 le sezioni funzionano stand-alone.
 
 
 
@@ -76,7 +75,7 @@ function findLightBike2() {
 
 function footballDatabase() {
 
-     var squads = [
+     const squads = [
           { 'name' : 'Roma', 'score' : 0, 'penality' : 0 },
           { 'name' : 'Milan', 'score' : 0, 'penality' : 0 },
           { 'name' : 'Inter', 'score' : 0, 'penality' : 0 },
@@ -97,30 +96,43 @@ function footballDatabase() {
                                         // Generare numeri random al posto degli 0 nelle proprietà:
                                         // punti fatti e falli subiti
 
-function getRandom() {
+function getRandomNumber() {
 
      return Math.round(Math.random() * (100 - 1) + 1);
 }
 
-function changeScoreAndPenality() {
+function changeScoresAndPenalities() {
      let squads = footballDatabase();
      for( let i = 0; i < squads.length; i++) {
-          squads[i].score = getRandom();
-          squads[i].penality = getRandom();
+          squads[i].score = getRandomNumber();
+          squads[i].penality = getRandomNumber();
      }
 
      console.log(squads);
+     return squads;
      
 }
 
-$(document).ready(changeScoreAndPenality);
-
-
-     
+// $(document).ready(changeScoreAndPenality);
 
                                         //3
                                         // Usando la destrutturazione creiamo un nuovo array 
                                         // i cui elementi contengono solo nomi e falli subiti 
                                         // e stampiamo tutto in console.
 
-   
+function destructuringForNamesAndPenalties()  {
+     var squads = footballDatabase();
+     var squadsWithRandom = changeScoresAndPenalities();
+     const nameAndPenalitiesDatabase = [];
+     for ( let i = 0; i < squadsWithRandom.length; i++ ) {
+          let {name, score} = squadsWithRandom[i];
+          let nameAndPenalitiesData = {name, score};
+          nameAndPenalitiesDatabase.push(nameAndPenalitiesData);
+     }
+     console.log(`Full database : `, squads );
+     console.log(`Full database with random scores and penalties: `, squadsWithRandom);
+     console.log(`Database with only names and scores: `, nameAndPenalitiesDatabase);
+}
+
+
+$(document).ready(destructuringForNamesAndPenalties);
