@@ -83,6 +83,77 @@ function findLightBike2(array) {
      return lightBike;
 }
 
-$(document).ready(findLightBike2(bikesArray2()));
+// $(document).ready(findLightBike2(bikesArray2()));
 
 
+                                   //Esercizio 2 diviso in 3 sezioni con 3 funzioni standalone.
+
+
+
+                                        //1 
+                                        //Creare un array di oggetti di squadre di calcio. 
+                                        // Ogni squadra avrà diverse proprietà: 
+                                        // nome, punti fatti, falli subiti.
+                                        // Nome sarà l'unica proprietà da compilare, 
+                                        // le altre saranno tutte settate a 0.
+
+
+function footballDatabase() {
+
+     return [
+          { 'name' : 'Roma', 'score' : 0, 'penality' : 0 },
+          { 'name' : 'Milan', 'score' : 0, 'penality' : 0 },
+          { 'name' : 'Inter', 'score' : 0, 'penality' : 0 },
+          { 'name' : 'Napoli', 'score' : 0, 'penality' : 0 },
+          { 'name' : 'Parma', 'score' : 0, 'penality' : 0 },
+          { 'name' : 'Juventus', 'score' : 0, 'penality' : 0 },
+          { 'name' : 'Brescia', 'score' : 0, 'penality' : 0 }
+     ];
+}
+
+// $(document).ready(footballDatabase);
+
+
+                                        //2 
+                                        // Generare numeri random al posto degli 0 nelle proprietà:
+                                        // punti fatti e falli subiti
+
+function getRandomNumber() {
+     return Math.round(Math.random() * (100 - 1) + 1);
+}
+
+
+function changeScoresAndPenalities(database) {
+     database.forEach(element => {
+          element.score = getRandomNumber();
+          element.penality = getRandomNumber();
+     });
+     console.log(database);
+     return database;
+     
+}
+
+// $(document).ready(changeScoresAndPenalities(footballDatabase()));
+
+
+
+                                        //3
+                                        // Usando la destrutturazione creiamo un nuovo array 
+                                        // i cui elementi contengono solo nomi e falli subiti 
+                                        // e stampiamo tutto in console.
+
+
+function destructuringForNamesAndPenalties(database, randomizedDatabase)  {
+     const nameAndPenalitiesDatabase = [];
+     randomizedDatabase.forEach(element => {
+          let {name, score} = element;
+          let nameAndPenalitiesData = {name, score};
+          nameAndPenalitiesDatabase.push(nameAndPenalitiesData);
+     });
+     console.log(`Full database : `, database );
+     console.log(`Full database with random scores and penalties: `, randomizedDatabase);
+     console.log(`Database with only names and scores: `, nameAndPenalitiesDatabase);
+}
+
+
+$(document).ready(destructuringForNamesAndPenalties(footballDatabase(), changeScoresAndPenalities(footballDatabase())));
